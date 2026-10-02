@@ -1,0 +1,11 @@
+# Machine-local pointers into caller projects and runtime deployments.
+orchestrator.local.json
+
+# Python environments and generated files.
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/

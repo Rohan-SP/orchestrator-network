@@ -1,0 +1,22 @@
+{
+  "data_roots": {
+    "workflows": "../caller/workflows",
+    "contracts": "../caller/contracts",
+    "graph": "../caller/graph",
+    "verb_specs": "../caller/verb_specs",
+    "verbs_parent": "../caller",
+    "decision_logs": "../caller/decision_logs"
+  },
+  "default_workflow": "workflow_name",
+  "default_inputs": {},
+  "default_decision_runtime": "local_cpu",
+  "decision_runtimes": {
+    "local_cpu": {
+      "api_url": "http://127.0.0.1:8000",
+      "compose_project_dir": "../runtime-service",
+      "compose_files": ["compose.yaml"],
+      "compose_project_name": "runtime-service",
+      "service": "inference"
+    }
+  }
+}
