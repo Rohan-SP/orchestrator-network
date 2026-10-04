@@ -9,14 +9,26 @@
   },
   "default_workflow": "workflow_name",
   "default_inputs": {},
-  "default_decision_runtime": "local_cpu",
+  "default_decision_runtime": "cpu_local",
   "decision_runtimes": {
-    "local_cpu": {
+    "cpu_local": {
       "api_url": "http://127.0.0.1:8000",
       "compose_project_dir": "../runtime-service",
       "compose_files": ["compose.yaml"],
       "compose_project_name": "runtime-service",
+      "build_on_connect": true,
+      "startup_timeout_seconds": 300,
       "service": "inference"
+    },
+    "gpu_laptop_remote": {
+      "api_url": "http://127.0.0.1:8000",
+      "compose_project_dir": "../runtime-service",
+      "compose_files": ["compose.yaml", "compose.cuda.yaml"],
+      "compose_project_name": "runtime-service",
+      "env_file": "benchmark_orchestrator.gpu_laptop_remote.compose.env",
+      "service": "inference",
+      "image_reference": "ghcr.io/your-account/decision-runtime:latest",
+      "startup_timeout_seconds": 300
     }
   }
 }

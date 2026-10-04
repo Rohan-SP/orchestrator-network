@@ -1,0 +1,18 @@
+{
+  "default_runtime_container": "cpu_local",
+  "runtime_containers": {
+    "cpu_local": {
+      "runtime_profile": "cpu_local",
+      "transport": "compose",
+      "ssh_target": null
+    },
+    "gpu_laptop": {
+      "runtime_profile": "gpu_laptop_remote",
+      "transport": "ssh_tunnel",
+      "ssh_target": "SET_TO_TAILSCALE_SSH_ALIAS"
+    }
+  },
+  "benchmarks": {
+    "workflow_name": "../caller/model_runtime/benchmarks/workflow_name.golden.json"
+  }
+}

@@ -1,8 +1,13 @@
 # Machine-local pointers into caller projects and runtime deployments.
 orchestrator.local.json
+benchmark_orchestrator.local.json
+benchmark_orchestrator.runtime_build_state.json
+benchmark_orchestrator.gpu_laptop_remote.compose.env
+benchmark_orchestrator.local_results/
 
 # Python environments and generated files.
 .venv/
+.venv-4b-benchmark/
 __pycache__/
 *.py[cod]
 *.egg-info/

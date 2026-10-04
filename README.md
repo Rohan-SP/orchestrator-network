@@ -1,7 +1,5 @@
 # Orchestrator
 
-Status: **draft / pending owner review**.
-
 This repository contains reusable LangGraph orchestration, workflow input
 resolution, context assembly, and an HTTP client for a decision service.
 Callers own workflow definitions, contracts, graph data, and verb implementations.
@@ -41,13 +39,15 @@ The shape below is generic and contains no project paths:
   },
   "default_workflow": "workflow_name",
   "default_inputs": {},
-  "default_decision_runtime": "local_cpu",
+  "default_decision_runtime": "cpu_local",
   "decision_runtimes": {
-    "local_cpu": {
+    "cpu_local": {
       "api_url": "http://127.0.0.1:8000",
       "compose_project_dir": "../runtime-service",
       "compose_files": ["compose.yaml"],
       "compose_project_name": "runtime-service",
+      "build_on_connect": true,
+      "startup_timeout_seconds": 300,
       "service": "inference"
     }
   }

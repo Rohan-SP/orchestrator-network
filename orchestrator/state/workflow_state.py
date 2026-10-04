@@ -15,6 +15,7 @@ class WorkflowState:
     decision_runtime: DecisionClient
 
     resolved_args: dict[str, Any] | None = None
+    workflow_instructions: str | None = None
     # kjl3: Track multiple prefixes by stable ID and exact text, allowing
     # different combined states to reference the same instructions/contracts.
     state_prefix: str | None = None

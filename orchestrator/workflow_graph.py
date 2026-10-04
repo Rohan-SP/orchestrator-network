@@ -4,6 +4,7 @@ from langgraph.graph import END, START, StateGraph
 
 from .state.workflow_state import WorkflowState
 from .tools.workflow_context_builder import build_context
+from .tools.question_formatter import compile_decision_question
 from .tools.workflow_reader import load_workflow
 
 
@@ -18,6 +19,7 @@ def prepare(state: WorkflowState) -> dict:
     # Return updates for the prepared state fields.
     return {
         "resolved_args": context["args"],
+        "workflow_instructions": context["workflow_instructions"],
         "state_prefix": context["state_prefix"],
         "state_suffix": context["state_suffix"],
         "full_state": context["state_prefix"] + context["state_suffix"],
@@ -52,9 +54,13 @@ def ask_question(state: WorkflowState) -> dict:
         if question["id"] not in state.answers
     )
 
+    runtime_question = compile_decision_question(
+        state.workflow_instructions,
+        question,
+    )
     answer = state.decision_runtime.ask_question(
         state_cache_key=state.state_cache_key,
-        question=question,
+        question=runtime_question,
     )
 
     return {

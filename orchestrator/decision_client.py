@@ -22,6 +22,7 @@ class DecisionClient:
         self.last_state: dict | None = None
         self.last_decision: dict | None = None
         self._model_details: dict | None = None
+        self.runtime_status: dict | None = None
 
     def _request(self, method, path, **kwargs):
         response = self.http.request(method, path, **kwargs)
